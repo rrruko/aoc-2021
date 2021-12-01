@@ -3,11 +3,11 @@ import Data.Foldable (foldl')
 part1 :: [Int] -> Int
 part1 (x:xs) =
   let
-    (_, count) = foldl' (flip accumulate) (x, 0) xs
+    (_, count) = foldl' accumulate (x, 0) xs
   in
     count
   where
-  accumulate x (prev, count)
+  accumulate (prev, count) x
     | x > prev = (x, count + 1)
     | otherwise = (x, count)
 
